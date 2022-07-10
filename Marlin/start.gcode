@@ -3,11 +3,14 @@
 ;Cura
 M140 S{material_bed_temperature_layer_0} ; Set Heat Bed temperature
 M190 S{material_bed_temperature_layer_0} ; Wait for Heat Bed temperature
-;Prusaslicer
-M140 S[first_layer_temperature] ; Set Heat Bed temperature
+;The extruder is already heated from time to time, so heat it after heating bed
+M104 S{material_print_temperature_layer_0} ; start warming extruder to save some time
+;Prusaslicer 
+M140 S[first_layer_bed_temperature] ; Set Heat Bed temperature
 M190 S[first_layer_bed_temperature] ; Wait for Heat Bed temperature
+;The extruder is already heated from time to time, so heat it after heating bed
+M104 S[first_layer_temperature] ; start warming extruder to save some time
 
-M104 S200 ; start warming extruder to 200
 G28 ; Home all axes
 
 ; Start UBL
